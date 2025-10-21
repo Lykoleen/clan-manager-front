@@ -245,7 +245,7 @@ async function saveMembers() {
                 role: member.role,
                 donations: member.donations || 0,
                 donationsReceived: member.donationsReceived || 0,
-                comments: member.comments || '',
+                comment: member.comments || '',
                 participations: member.participations || {
                     gdc: false,
                     jdc: false,

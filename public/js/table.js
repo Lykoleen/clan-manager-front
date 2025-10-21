@@ -38,7 +38,8 @@ function saveMemberDataTable(memberId, data) {
     if (member) {
         // Sauvegarder les données supplémentaires sur le serveur
         saveMemberAdditionalData(memberId, {
-            comments: data.comment || '',
+            name: member.name,
+            comment: data.comment || '',
             participations: data.participations || {}
         });
     }

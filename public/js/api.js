@@ -306,7 +306,7 @@ async function refreshClanData() {
             return {
                 ...member,
                 // Données supplémentaires
-                comments: additionalMemberData.comments || '',
+                comments: additionalMemberData.comment || '',
                 participations: additionalMemberData.participations || {
                     gdc: false,
                     jdc: false,
