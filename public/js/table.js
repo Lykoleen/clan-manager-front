@@ -36,6 +36,10 @@ function saveMemberDataTable(memberId, data) {
     // Trouver le membre correspondant pour récupérer son tag
     const member = clanMembers.find(m => m.tag === memberId);
     if (member) {
+        // Mettre à jour les données dans clanMembers
+        member.comments = data.comment || '';
+        member.participations = data.participations || {};
+        
         // Sauvegarder les données supplémentaires sur le serveur
         saveMemberAdditionalData(memberId, {
             name: member.name,
