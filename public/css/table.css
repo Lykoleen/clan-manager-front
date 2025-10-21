@@ -1,0 +1,254 @@
+/* ===== STYLES DU TABLEAU COMPATIBLES BOOTSTRAP ===== */
+
+/* Container du tableau */
+.table-container {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+}
+
+/* Styles de base du tableau */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 0;
+}
+
+.table th {
+    font-weight: 600;
+    color: #495057;
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+    padding: 1rem 0.75rem;
+    font-size: 0.875rem;
+    text-align: left;
+}
+
+.table td {
+    padding: 1rem 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #dee2e6;
+    vertical-align: middle;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.075);
+}
+
+/* ===== COULEURS DES TROUPES ===== */
+.red-text {
+    color: var(--danger-color);
+    font-weight: 600;
+}
+
+.green-text {
+    color: var(--success-color);
+    font-weight: 600;
+}
+
+/* ===== COLONNES SPÉCIALISÉES ===== */
+.comment-cell {
+    max-width: 500px;
+    min-width: 350px;
+    word-wrap: break-word;
+    white-space: normal;
+    vertical-align: top;
+}
+
+.participations-cell {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.comment-preview {
+    font-size: 0.9em;
+    color: #6c757d;
+    line-height: 1.4;
+    max-height: none;
+    overflow: visible;
+}
+
+.participations-preview {
+    font-size: 0.9em;
+    color: #6c757d;
+    max-height: 1.5em;
+    overflow: hidden;
+}
+
+/* ===== CHECKBOXES PERSONNALISÉES ===== */
+.participations-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.875rem;
+    color: #495057;
+    position: relative;
+    padding-left: 1.5rem;
+    user-select: none;
+}
+
+.checkbox-label input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 18px;
+    width: 18px;
+    background-color: #fff;
+    border: 2px solid #dee2e6;
+    border-radius: 3px;
+    transition: var(--transition);
+}
+
+.checkbox-label:hover .checkmark {
+    border-color: var(--primary-color);
+}
+
+.checkbox-label input:checked ~ .checkmark {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.checkbox-label input:checked ~ .checkmark:after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 2px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* ===== GRILLE DES DÉTAILS ===== */
+.member-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.detail-section {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    border: 1px solid #dee2e6;
+}
+
+.detail-section h3 {
+    margin: 0 0 1rem 0;
+    color: #495057;
+    font-size: 1rem;
+    font-weight: 600;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    padding: 0.25rem 0;
+}
+
+.detail-label {
+    font-weight: 600;
+    color: #6c757d;
+    min-width: 120px;
+}
+
+.detail-value {
+    color: #495057;
+    text-align: right;
+}
+
+/* ===== COULEURS SPÉCIFIQUES POUR LES VALEURS ===== */
+.detail-value.red-text {
+    color: var(--danger-color) !important;
+    font-weight: 600;
+}
+
+.detail-value.green-text {
+    color: var(--success-color) !important;
+    font-weight: 600;
+}
+
+/* ===== RESPONSIVE POUR LE TABLEAU ===== */
+@media (max-width: 991.98px) {
+    .member-details-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .participations-checkboxes {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .comment-cell {
+        max-width: 300px;
+        min-width: 200px;
+    }
+    
+    .participations-cell {
+        max-width: 150px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .table th,
+    .table td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.8rem;
+    }
+    
+    .detail-section {
+        padding: 1rem;
+    }
+    
+    .detail-item {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+    
+    .detail-label,
+    .detail-value {
+        text-align: left;
+        min-width: auto;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .table th,
+    .table td {
+        padding: 0.5rem 0.25rem;
+        font-size: 0.75rem;
+    }
+    
+    .detail-section {
+        padding: 0.75rem;
+    }
+    
+    .detail-section h3 {
+        font-size: 0.9rem;
+    }
+}

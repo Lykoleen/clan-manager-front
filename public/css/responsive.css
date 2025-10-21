@@ -1,0 +1,468 @@
+/* ===== RESPONSIVE DESIGN COMPLÉMENTAIRE À BOOTSTRAP ===== */
+
+/* ===== BREAKPOINTS CUSTOM ===== */
+/* 
+Mobile First Approach:
+- xs: 0-575px (phones portrait)
+- sm: 576-767px (phones landscape)  
+- md: 768-991px (tablets)
+- lg: 992-1199px (desktops)
+- xl: 1200px+ (large desktops)
+*/
+
+/* ===== TABLEAU RESPONSIVE AVANCÉ ===== */
+
+/* Sur mobile, transformer le tableau en cartes */
+@media (max-width: 767.98px) {
+    .table-responsive {
+        overflow: visible;
+    }
+    
+    .table,
+    .table thead,
+    .table tbody,
+    .table th,
+    .table td,
+    .table tr {
+        display: block;
+    }
+    
+    .table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    
+    .table tr {
+        background: white;
+        margin-bottom: 1rem;
+        border: 1px solid #dee2e6;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .table td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding: 0.5rem 0 0.5rem 50%;
+        text-align: left;
+    }
+    
+    .table td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: 600;
+        color: #495057;
+    }
+    
+    /* Masquer la colonne d'expansion sur mobile */
+    .table td.expand-column {
+        display: none;
+    }
+    
+    /* Ajouter un bouton d'action en haut à droite de chaque carte */
+    .table tr::before {
+        content: '';
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        width: 32px;
+        height: 32px;
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .table tr::after {
+        content: '⋮';
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        color: #6c757d;
+        cursor: pointer;
+        z-index: 1;
+    }
+}
+
+/* ===== HEADER RESPONSIVE AMÉLIORÉ ===== */
+
+/* Sur très petits écrans */
+@media (max-width: 575.98px) {
+    .bg-gradient-primary .container-fluid {
+        padding: 1rem 0.75rem;
+    }
+    
+    .bg-gradient-primary h1 {
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    /* Empiler les contrôles verticalement */
+    .bg-gradient-primary .row.g-2 {
+        gap: 0.5rem !important;
+    }
+    
+    .bg-gradient-primary .col-12.col-sm-8,
+    .bg-gradient-primary .col-6.col-sm-4 {
+        width: 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+/* ===== RECHERCHE RESPONSIVE ===== */
+
+@media (max-width: 575.98px) {
+    .search-input {
+        font-size: 16px; /* Évite le zoom automatique sur iOS */
+        padding: 0.75rem 1rem;
+        padding-right: 4rem;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .search-input {
+        padding-right: 5rem;
+    }
+}
+
+/* ===== MODAL RESPONSIVE ===== */
+
+@media (max-width: 575.98px) {
+    .modal-dialog {
+        margin: 0.5rem;
+        max-width: calc(100vw - 1rem);
+    }
+    
+    .modal-content {
+        border-radius: 0.5rem;
+    }
+    
+    .modal-body .row.g-3 {
+        gap: 0.75rem !important;
+    }
+}
+
+/* ===== ZONES DÉROULANTES RESPONSIVE ===== */
+
+@media (max-width: 575.98px) {
+    .expand-container {
+        padding: 1rem;
+        margin: 0.5rem;
+        border-radius: 0.5rem;
+    }
+    
+    .expand-container .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    .expand-container .form-group label {
+        font-size: 0.875rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .comment-textarea,
+    .participations-textarea {
+        font-size: 16px; /* Évite le zoom sur iOS */
+        padding: 0.75rem;
+        min-height: 100px;
+    }
+    
+    .expand-actions {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+    }
+    
+    .save-btn,
+    .cancel-btn {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+    }
+}
+
+/* ===== HÉROS RESPONSIVE ===== */
+
+@media (max-width: 575.98px) {
+    .hero-levels-container {
+        margin-top: 0.75rem;
+    }
+    
+    .hero-levels {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .hero-item {
+        justify-content: space-between;
+        padding: 0.5rem;
+        font-size: 0.875rem;
+    }
+    
+    .hero-icon {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .trophies-info {
+        gap: 0.5rem;
+        margin-top: 0.75rem;
+    }
+    
+    .trophy-item {
+        padding: 0.5rem;
+        font-size: 0.875rem;
+    }
+}
+
+/* ===== AMÉLIORATIONS TABLETTE ===== */
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .table td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.875rem;
+    }
+    
+    .hero-levels {
+        gap: 0.75rem;
+    }
+    
+    .hero-item {
+        font-size: 0.875rem;
+    }
+    
+    /* Restaurer le design du bouton d'expansion sur tablette */
+    .expand-column {
+        display: table-cell !important;
+        width: 50px;
+        text-align: center;
+    }
+    
+    .expand-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 0.25rem;
+        transition: all 0.15s ease-in-out;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        color: #6c757d;
+    }
+    
+    .expand-btn:hover {
+        background-color: #f8f9fa;
+        color: var(--primary-color);
+    }
+    
+    .expand-btn:focus {
+        outline: 2px solid var(--primary-color);
+        outline-offset: 2px;
+    }
+}
+
+/* ===== AMÉLIORATIONS DESKTOP ===== */
+
+@media (min-width: 992px) {
+    .table th,
+    .table td {
+        padding: 1rem 0.75rem;
+    }
+    
+    .expand-container {
+        padding: 2rem;
+    }
+    
+    .hero-levels {
+        gap: 1rem;
+    }
+    
+    .hero-item {
+        padding: 0.5rem 0.75rem;
+    }
+    
+    /* Assurer le bon design du bouton d'expansion sur desktop */
+    .expand-column {
+        display: table-cell !important;
+        width: 50px;
+        text-align: center;
+    }
+    
+    .expand-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 0.25rem;
+        transition: all 0.15s ease-in-out;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        color: #6c757d;
+    }
+    
+    .expand-btn:hover {
+        background-color: #f8f9fa;
+        color: var(--primary-color);
+    }
+    
+    .expand-btn:focus {
+        outline: 2px solid var(--primary-color);
+        outline-offset: 2px;
+    }
+}
+
+/* ===== ORIENTATION LANDSCAPE SUR MOBILE ===== */
+
+@media (max-width: 767.98px) and (orientation: landscape) {
+    .bg-gradient-primary .container-fluid {
+        padding: 0.75rem;
+    }
+    
+    .bg-gradient-primary h1 {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .search-input {
+        padding: 0.5rem 1rem;
+        padding-right: 4rem;
+    }
+    
+    .table tr {
+        margin-bottom: 0.75rem;
+        padding: 0.75rem;
+    }
+}
+
+/* ===== PRINT STYLES ===== */
+
+@media print {
+    .bg-gradient-primary {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+    }
+    
+    .btn,
+    .search-input,
+    .expand-actions {
+        display: none !important;
+    }
+    
+    .table {
+        border-collapse: collapse !important;
+    }
+    
+    .table th,
+    .table td {
+        border: 1px solid #000 !important;
+        padding: 0.5rem !important;
+    }
+}
+
+/* ===== DARK MODE SUPPORT ===== */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bs-body-bg: #212529;
+        --bs-body-color: #ffffff;
+        --bs-border-color: #495057;
+    }
+    
+    .card {
+        background-color: #343a40;
+        border-color: #495057;
+    }
+    
+    .table {
+        color: #ffffff;
+    }
+    
+    .table th {
+        background-color: #495057;
+        border-color: #6c757d;
+    }
+    
+    .table td {
+        border-color: #495057;
+    }
+    
+    .table-hover tbody tr:hover {
+        background-color: rgba(255, 255, 255, 0.075);
+    }
+}
+
+/* ===== PERFORMANCE ET ANIMATIONS ===== */
+
+/* Réduire les animations sur les appareils qui préfèrent moins de mouvement */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ===== UTILITAIRES RESPONSIVE CUSTOM ===== */
+
+.hide-on-mobile {
+    display: block;
+}
+
+@media (max-width: 767.98px) {
+    .hide-on-mobile {
+        display: none !important;
+    }
+}
+
+.show-on-mobile {
+    display: none;
+}
+
+@media (max-width: 767.98px) {
+    .show-on-mobile {
+        display: block !important;
+    }
+}
+
+.text-responsive {
+    font-size: 0.875rem;
+}
+
+@media (min-width: 768px) {
+    .text-responsive {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .text-responsive {
+        font-size: 1.125rem;
+    }
+}
