@@ -1,0 +1,10 @@
+# Configuration GitHub Pages pour CatBreakers Frontend
+
+Ce fichier indique à GitHub Pages de servir les fichiers depuis le dossier `public/`.
+
+## Structure du projet :
+- `public/` - Dossier contenant les fichiers statiques (HTML, CSS, JS)
+- `README.md` - Documentation du projet
+
+## Déploiement automatique :
+GitHub Pages servira automatiquement les fichiers depuis le dossier `public/` à la racine du repository.

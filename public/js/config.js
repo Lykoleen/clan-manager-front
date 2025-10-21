@@ -3,10 +3,10 @@
 // Configuration globale de l'application
 window.__APP_CONFIG__ = {
     // URL de l'API pour la synchronisation des données
-    API_URL: 'http://localhost:3000/api/members',
+    API_URL: 'https://clan-manager-back.onrender.com/api/clan',
     
     // Configuration du serveur (pour le déploiement)
-    SERVER_URL: 'http://localhost:3000',
+    SERVER_URL: 'https://clan-manager-back.onrender.com',
     
     // Paramètres de synchronisation
     SYNC_SETTINGS: {

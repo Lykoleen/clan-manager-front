@@ -71,7 +71,7 @@ async function fetchClanData(clanTag) {
         const cleanTag = clanTag.replace('#', '');
         
         // Utiliser le serveur proxy au lieu de l'API Supercell directement
-        const response = await fetch(`http://localhost:3000/api/clans/${cleanTag}`);
+        const response = await fetch(`https://clan-manager-back.onrender.com/api/clans/${cleanTag}`);
 
         if (!response.ok) {
             const errorData = await response.json().catch(() => ({}));
@@ -101,7 +101,7 @@ async function fetchPlayerData(playerTag) {
         const cleanTag = playerTag.replace('#', '');
         
         // Utiliser le serveur proxy au lieu de l'API Supercell directement
-        const response = await fetch(`http://localhost:3000/api/players/${cleanTag}`);
+        const response = await fetch(`https://clan-manager-back.onrender.com/api/players/${cleanTag}`);
 
         if (!response.ok) {
             const errorData = await response.json().catch(() => ({}));
@@ -123,7 +123,7 @@ async function fetchWarData(clanTag) {
         const cleanTag = clanTag.replace('#', '');
         
         // Utiliser le serveur proxy au lieu de l'API Supercell directement
-        const response = await fetch(`http://localhost:3000/api/clans/${cleanTag}/currentwar`);
+        const response = await fetch(`https://clan-manager-back.onrender.com/api/clans/${cleanTag}/currentwar`);
 
         if (!response.ok) {
             const errorData = await response.json().catch(() => ({}));
@@ -145,7 +145,7 @@ async function fetchLeagueGroupData(clanTag) {
         const cleanTag = clanTag.replace('#', '');
         
         // Utiliser le serveur proxy au lieu de l'API Supercell directement
-        const response = await fetch(`http://localhost:3000/api/clans/${cleanTag}/currentwar/leaguegroup`);
+        const response = await fetch(`https://clan-manager-back.onrender.com/api/clans/${cleanTag}/currentwar/leaguegroup`);
 
         if (!response.ok) {
             throw new Error(`Erreur API: ${response.status} - ${response.statusText}`);
