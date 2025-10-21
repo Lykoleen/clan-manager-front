@@ -160,24 +160,23 @@ async function syncWithServer() {
             return;
         }
         
-        showStatusMessage('Synchronisation en cours...', 'info');
-        
-        // Charger depuis le serveur (priorité serveur en cas de conflit)
-        const serverMembers = await loadMembers();
-        
-        // Vérifier s'il y a des modifications locales non synchronisées
-        const localData = localStorage.getItem('clanMembers');
-        if (localData) {
-            const localMembers = JSON.parse(localData);
-            const serverDataStr = JSON.stringify(serverMembers);
-            
-            if (localData !== serverDataStr) {
-                console.log('⚠️ Conflit détecté - priorité donnée au serveur');
-                showStatusMessage('Conflit résolu - version serveur conservée', 'warning');
-            }
+        if (!currentClanTag || !clanMembers || clanMembers.length === 0) {
+            showStatusMessage('Aucune donnée à synchroniser', 'warning');
+            return;
         }
         
+        showStatusMessage('Synchronisation en cours...', 'info');
+        
+        // 1. D'abord sauvegarder les données locales vers le serveur
+        console.log('📤 Sauvegarde des données locales vers le serveur...');
+        await saveMembers();
+        
+        // 2. Ensuite charger les données depuis le serveur pour vérifier
+        console.log('📥 Chargement des données depuis le serveur...');
+        const serverMembers = await loadMembers();
+        
         console.log('✅ Synchronisation terminée');
+        showStatusMessage('Synchronisation réussie', 'success');
         
     } catch (error) {
         console.error('❌ Erreur de synchronisation:', error);
