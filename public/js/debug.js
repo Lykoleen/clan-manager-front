@@ -42,6 +42,8 @@ function debugSpecificMember(memberTag) {
 // Instructions d'utilisation
 console.log('📋 Instructions de debug:');
 console.log('1. debugClanMembers() - Affiche tous les membres');
-console.log('2. debugSpecificMember("#TAG") - Affiche un membre spécifique');
+console.log('2. debugSpecificMember("TAG") - Affiche un membre spécifique (sans #)');
 console.log('3. Modifiez un commentaire/participation');
-console.log('4. Relancez debugSpecificMember() pour voir si les données sont mises à jour');
+console.log('4. Relancez debugSpecificMember("TAG") pour voir si les données sont mises à jour');
+console.log('');
+console.log('💡 Exemple: debugSpecificMember("22QU902G0")');

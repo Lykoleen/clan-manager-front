@@ -119,43 +119,24 @@ async function fetchPlayerData(playerTag) {
 // Fonction pour récupérer les données de guerre du clan
 async function fetchWarData(clanTag) {
     try {
-        // Nettoyer le tag du clan (enlever le # s'il y en a un)
-        const cleanTag = clanTag.replace('#', '');
-        
-        // Utiliser le serveur proxy au lieu de l'API Supercell directement
-        const response = await fetch(`https://clan-manager-back.onrender.com/api/clans/${cleanTag}/currentwar`);
-
-        if (!response.ok) {
-            const errorData = await response.json().catch(() => ({}));
-            throw new Error(errorData.error || `Erreur API: ${response.status} - ${response.statusText}`);
-        }
-
-        const data = await response.json();
-        return data;
+        // Fonctionnalité désactivée - backend simplifié
+        console.log('⚠️ Fonctionnalité guerre désactivée (backend simplifié)');
+        return null;
     } catch (error) {
         console.error('Erreur lors de la récupération des données de guerre:', error);
-        throw error;
+        return null;
     }
 }
 
 // Fonction pour récupérer les données de guerre de ligue du clan
 async function fetchLeagueGroupData(clanTag) {
     try {
-        // Nettoyer le tag du clan (enlever le # s'il y en a un)
-        const cleanTag = clanTag.replace('#', '');
-        
-        // Utiliser le serveur proxy au lieu de l'API Supercell directement
-        const response = await fetch(`https://clan-manager-back.onrender.com/api/clans/${cleanTag}/currentwar/leaguegroup`);
-
-        if (!response.ok) {
-            throw new Error(`Erreur API: ${response.status} - ${response.statusText}`);
-        }
-
-        const data = await response.json();
-        return data;
+        // Fonctionnalité désactivée - backend simplifié
+        console.log('⚠️ Fonctionnalité guerre de ligue désactivée (backend simplifié)');
+        return null;
     } catch (error) {
         console.error('Erreur lors de la récupération des données de ligue:', error);
-        throw error;
+        return null;
     }
 }
 // Fonction pour calculer le type de joueur dominant (donneur/receveur/hybride)

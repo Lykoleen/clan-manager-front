@@ -79,22 +79,31 @@ function loadStoredClanAdditionalData(clanTag) {
 // Fonction pour sauvegarder les données supplémentaires d'un membre
 async function saveMemberAdditionalData(memberTag, memberData) {
     try {
+        console.log('🔧 saveMemberAdditionalData appelée:', { memberTag, memberData, currentClanTag, STORAGE_MODE, navigatorOnLine: navigator.onLine });
+        
         if (!currentClanTag) {
-            console.warn('Aucun clan sélectionné pour la sauvegarde');
+            console.warn('❌ Aucun clan sélectionné pour la sauvegarde');
             return;
         }
 
         // Debounce pour éviter les requêtes multiples
         if (saveTimeout) {
+            console.log('⏰ Annulation du timeout précédent');
             clearTimeout(saveTimeout);
         }
         
+        console.log('⏰ Programmation de la sauvegarde dans 1 seconde...');
         saveTimeout = setTimeout(async () => {
             if (STORAGE_MODE === 'online' && navigator.onLine) {
                 console.log('📡 Sauvegarde des données supplémentaires sur le serveur...');
                 
                 const cleanClanTag = currentClanTag.replace('#', '');
                 const cleanMemberTag = memberTag.replace('#', '');
+                
+                console.log('🌐 Envoi vers le serveur:', {
+                    url: `${SERVER_URL}/api/clan/${cleanClanTag}/member/${cleanMemberTag}`,
+                    data: memberData
+                });
                 
                 const response = await fetch(`${SERVER_URL}/api/clan/${cleanClanTag}/member/${cleanMemberTag}`, {
                     method: 'POST',
@@ -104,16 +113,20 @@ async function saveMemberAdditionalData(memberTag, memberData) {
                     body: JSON.stringify(memberData)
                 });
                 
+                console.log('📡 Réponse du serveur:', response.status, response.statusText);
+                
                 if (response.ok) {
                     const result = await response.json();
-                    console.log(`✅ Données du membre ${cleanMemberTag} sauvegardées`);
+                    console.log(`✅ Données du membre ${cleanMemberTag} sauvegardées:`, result);
                     
                     // Sauvegarder aussi en local comme backup
                     saveMemberDataToLocal(memberTag, memberData);
                     
                     showStatusMessage('Données du membre sauvegardées', 'success');
                 } else {
-                    throw new Error(`Erreur serveur: ${response.status}`);
+                    const errorText = await response.text();
+                    console.error('❌ Erreur serveur:', response.status, errorText);
+                    throw new Error(`Erreur serveur: ${response.status} - ${errorText}`);
                 }
             } else {
                 // Mode local ou serveur indisponible
