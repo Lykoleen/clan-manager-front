@@ -320,8 +320,20 @@ function saveMemberDataExpandable(memberId) {
     // Sauvegarder dans localStorage
     localStorage.setItem(`memberData_${memberId}`, JSON.stringify(data));
     
-    // Afficher le message de succès
-    showStatusMessage('Données sauvegardées avec succès', 'success');
+    // Trouver le membre correspondant pour récupérer son tag
+    const member = clanMembers.find(m => `member-${m.tag.replace('#', '')}` === memberId);
+    if (member) {
+        // Mettre à jour les données dans clanMembers
+        member.comments = data.comment || '';
+        member.participations = data.participations || {};
+        
+        // Sauvegarder les données supplémentaires sur le serveur
+        saveMemberAdditionalData(member.tag, {
+            name: member.name,
+            comment: data.comment || '',
+            participations: data.participations || {}
+        });
+    }
     
     // Fermer la zone déroulante
     closeMemberDetails(memberId);
