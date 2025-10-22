@@ -119,6 +119,14 @@ async function saveMemberAdditionalData(memberTag, memberData) {
                     const result = await response.json();
                     console.log(`✅ Données du membre ${cleanMemberTag} sauvegardées:`, result);
                     
+                    // Mettre à jour clanMembers avec les nouvelles données
+                    const member = clanMembers.find(m => m.tag === memberTag);
+                    if (member) {
+                        member.comments = memberData.comment || '';
+                        member.participations = memberData.participations || {};
+                        console.log('🔄 clanMembers mis à jour pour:', memberTag);
+                    }
+                    
                     // Sauvegarder aussi en local comme backup
                     saveMemberDataToLocal(memberTag, memberData);
                     
@@ -131,6 +139,15 @@ async function saveMemberAdditionalData(memberTag, memberData) {
             } else {
                 // Mode local ou serveur indisponible
                 console.log('💾 Sauvegarde locale des données supplémentaires...');
+                
+                // Mettre à jour clanMembers même en mode local
+                const member = clanMembers.find(m => m.tag === memberTag);
+                if (member) {
+                    member.comments = memberData.comment || '';
+                    member.participations = memberData.participations || {};
+                    console.log('🔄 clanMembers mis à jour localement pour:', memberTag);
+                }
+                
                 saveMemberDataToLocal(memberTag, memberData);
                 showStatusMessage('Données sauvegardées localement', 'info');
             }
