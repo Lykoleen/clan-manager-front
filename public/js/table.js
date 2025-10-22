@@ -15,7 +15,8 @@ function getRoleDisplayName(role) {
 // Fonction pour récupérer les données sauvegardées d'un membre
 function getMemberSavedData(memberId) {
     // D'abord essayer de récupérer depuis les données fusionnées du membre
-    const member = clanMembers.find(m => m.tag === memberId);
+    const memberTag = memberId.replace('member-', '#');
+    const member = clanMembers.find(m => m.tag === memberTag);
     if (member && (member.comments || member.participations)) {
         return {
             comment: member.comments || '',
